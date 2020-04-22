@@ -1,8 +1,10 @@
-import react from "react";
+import React from "react";
 import styles from "./button.module.css";
 
-export function Button(props) {
-  props.className = `${styles.button} ${props.className}`;
-
-  return React.createElement("a", props);
-}
+export const Button = React.forwardRef((props, ref) => {
+  return React.createElement("a", {
+    ...props,
+    ref,
+    className: `${styles.button} ${props.className}`,
+  });
+});
